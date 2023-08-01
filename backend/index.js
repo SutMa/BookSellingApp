@@ -2,6 +2,8 @@ import express from "express"
 import mysql2 from "mysql2"
 import cors from "cors"
 const app = express()
+
+
 app.use(express.json())
 app.use(cors())
 
@@ -26,10 +28,11 @@ app.get("/books", (req, res) =>{
 })
 
 app.post('/books', (req,res)=>{
-  const q = 'INSERT INTO books (`title`, `desc`, `cover`) VALUES (?)'
+  const q = 'INSERT INTO books (`title`, `desc`, `price`, `cover`) VALUES (?)'
   const values = [
     req.body.title,
     req.body.desc,
+    req.body.price,
     req.body.cover 
   ]
 
